@@ -1,22 +1,43 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
-import { supabase } from '../api/supabase'
+import React, {useEffect} from 'react';
+import styled from 'styled-components';
+import {supabase} from '../api/supabase';
 import {useNavigate} from 'react-router-dom';
 
 const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data, error } = await supabase.from('testTable').select('*');
+        const {data, error} = await supabase.from('testTable').select('*');
         return data;
       } catch (error) {
         console.log('Error', error);
       }
-    }
-    const artistData = fetchData()
-  })
-  const myArtistTestData = ['나의 아티스트','나의 아티스트','나의 아티스트','나의 아티스트','나의 아티스트']
-  const listTestData = ['르세라핌', '태연', '임재현', 'aespa', 'EXO', '박재정', '범진', '아이브', '정국', '임영웅', '너드커넥션', '이무진', '아이유', '제니', '악뮤', '제니', 'RIIZE', '우디', '여자아이들', 'QWER']
+    };
+    const artistData = fetchData();
+  });
+  const myArtistTestData = ['나의 아티스트', '나의 아티스트', '나의 아티스트', '나의 아티스트', '나의 아티스트'];
+  const listTestData = [
+    '르세라핌',
+    '태연',
+    '임재현',
+    'aespa',
+    'EXO',
+    '박재정',
+    '범진',
+    '아이브',
+    '정국',
+    '임영웅',
+    '너드커넥션',
+    '이무진',
+    '아이유',
+    '제니',
+    '악뮤',
+    '제니',
+    'RIIZE',
+    '우디',
+    '여자아이들',
+    'QWER',
+  ];
 
   const navigate = useNavigate();
 
@@ -26,7 +47,7 @@ const Home = () => {
       const {
         data: {user},
       } = await supabase.auth.getUser();
-      console.log(user);
+      console.log('현재 로그인된 user', user);
     };
     userInfo();
   }, []);
@@ -42,16 +63,12 @@ const Home = () => {
   return (
     <StMainWrapper>
       {/* // Banner */}
-      <StBannerDiv>
-
-      </StBannerDiv>
+      <StBannerDiv></StBannerDiv>
 
       {/* // My Artist */}
       <StSideWrapper>
         <StDiv>
-          <StSpan>
-            나의 아티스트
-          </StSpan>
+          <StSpan>나의 아티스트</StSpan>
           <StArtistDiv>
             {
               myArtistTestData.map((el) => {
@@ -87,13 +104,11 @@ const Home = () => {
         <StP>더 많은 아티스트 준비 중</StP>
       </StSideWrapper>
       <>
-      <button onClick={logOut}>로그아웃</button>
+        <button onClick={logOut}>로그아웃</button>
       </>
     </StMainWrapper>
-
-
-  )
-}
+  );
+};
 // Wrapper
 const StMainWrapper = styled.div`
 background-color: black;
