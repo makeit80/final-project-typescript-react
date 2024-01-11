@@ -1,9 +1,10 @@
-import React from 'react'
-
+import React from 'react';
+import Signin from '../components/Auth/Signin';
 const Login = () => {
   return (
-    <div>Login</div>
-  )
-}
-
-export default Login
+    <div style={{marginTop: '80px'}}>
+      <Signin />
+    </div>
+  );
+};
+export default Login;
