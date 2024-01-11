@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { supabase } from '../api/supabase'
@@ -128,5 +129,40 @@ const StListTargetDiv = styled.div`
 `
 
 
+=======
+import React, {useEffect} from 'react';
+import {supabase} from '../api/supabase';
+import {useNavigate} from 'react-router-dom';
 
-export default Home
+const Home = () => {
+  const navigate = useNavigate();
+>>>>>>> 6e72a53213e515e26af24f788bcf248db07f5397
+
+  // user 정보 테스트
+  useEffect(() => {
+    const userInfo = async () => {
+      const {
+        data: {user},
+      } = await supabase.auth.getUser();
+      console.log(user);
+    };
+    userInfo();
+  }, []);
+
+  // 로그아웃
+  const logOut = async () => {
+    const {error} = await supabase.auth.signOut();
+    alert('로그아웃 되었습니다');
+    if (error) console.log('error', error);
+    navigate('/');
+  };
+
+  return (
+    //임시 로그아웃버튼
+    <>
+      <button onClick={logOut}>로그아웃</button>
+    </>
+  );
+};
+
+export default Home;
