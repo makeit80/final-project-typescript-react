@@ -1,20 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { supabase } from '../../../api/supabase'
 
 const Nav = () => {
-  const fetchData = async () => {
-    try {
-      const { data, error } = await supabase.from('chart').select('*');
-      console.log(data)
-      return data;
-    } catch (error) {
-      console.log('Error', error);
-    }
-  }
-  fetchData()
-
+  
   return (
     <StNav>
       <StLogoSpan>
@@ -27,12 +16,13 @@ const Nav = () => {
           <StyledLink to={"Community"}>Community</StyledLink>
           <StyledLink to={"Mypage"}>Mypage</StyledLink>
         </DropDownUl>
-      </DropDownDiv>
+      </DropDownDiv> 
 
       <StBtnDiv>
+        {/* TODO : Dropdown, search 아이콘 두께 변경 */}
         <StButton>
           <StImg src={process.env.PUBLIC_URL + '/images/search-icon-white.png'}></StImg>
-        </StButton>
+        </StButton> 
         <StButton>
           <StImg src={process.env.PUBLIC_URL + '/images/alarm-icon-white.png'}></StImg>
         </StButton>
@@ -53,7 +43,7 @@ left: 0;
 right: 0;
 height: 80px;
 
-background-color: #00000080;
+background-color: #000000;
 
 z-index: 100;
 
