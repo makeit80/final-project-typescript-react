@@ -70,20 +70,38 @@ const Home = () => {
         <StDiv>
           <StSpan>나의 아티스트</StSpan>
           <StArtistDiv>
-            {myArtistTestData.map(el => {
-              return <StArtistTargetDiv>{el}</StArtistTargetDiv>;
-            })}
+            {
+              myArtistTestData.map((el) => {
+                return (
+                  <StArtistTargetDiv>
+                    <StArtistTargetImgDiv></StArtistTargetImgDiv>
+                    <StArtistTargetP>{el}</StArtistTargetP>
+                  </StArtistTargetDiv>
+                )
+              })
+            }
           </StArtistDiv>
         </StDiv>
 
         {/* // Artist List */}
         <StListWrapper>
+          <StSpan>
+            아티스트 만나보기
+          </StSpan>
           <StListDiv>
-            {listTestData.map(el => {
-              return <StListTargetDiv>{el}</StListTargetDiv>;
-            })}
+            {
+              listTestData.map((el) => {
+                return (
+                  <StListTargetDiv>
+                    <StListTargetImgDiv></StListTargetImgDiv>
+                    <StListTargetP>{el}</StListTargetP>
+                  </StListTargetDiv>
+                )
+              })
+            }
           </StListDiv>
         </StListWrapper>
+        <StP>더 많은 아티스트 준비 중</StP>
       </StSideWrapper>
       <>
         <button onClick={logOut}>로그아웃</button>
@@ -93,67 +111,99 @@ const Home = () => {
 };
 // Wrapper
 const StMainWrapper = styled.div`
-  background-color: black;
-  padding-bottom: 100px;
-`;
+background-color: black;
+padding-bottom: 100px;
+
+`
 const StSideWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+
+margin-top: 140px;
+
+`
+// Common
+const StP = styled.p`
+  margin-top: 50px;
+  color: white;
+`
+const StSpan = styled.span`
+color: white;
+margin-left: 10px;
+`
 
 // Banner
 const StBannerDiv = styled.div`
-  width: 100vw;
-  height: 500px;
+width: 100vw;
+height: 500px;
 
-  background-color: gray;
-`;
+background-color: gray;
+`
 
 // My Artist
 const StDiv = styled.div`
-  width: 1400px;
-  height: 300px;
+width: 1400px;
+height: 300px;
 
-  margin-top: 50px;
-  border: 2px solid red;
-`;
-const StSpan = styled.span`
-  color: white;
-`;
+`
+
 
 const StArtistDiv = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  gap: 20px;
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+grid-template-rows: repeat(1, 1fr);
 
-  height: 200px;
-`;
+height: 200px;
+margin-top: 30px;
+`
 const StArtistTargetDiv = styled.div`
-  background-color: pink;
-  border-radius: 10px;
-`;
+margin: 10px;
+`
+const StArtistTargetImgDiv = styled.div`
+height: 140px;
+background-color: pink;
+border-radius: 10px;
+`
+const StArtistTargetP = styled.p`
+color: white;
+text-align: center;
+margin-top: 15px;
+`
+
 
 // Artist List
 const StListWrapper = styled.div`
-  width: 1400px;
-  height: 800px;
+width: 1400px;
+height: 1000px;
 
-  margin-top: 50px;
-`;
+margin-top: 80px;
+`
 const StListDiv = styled.div`
-  height: inherit;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-`;
+height: inherit;
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+grid-template-rows: repeat(4, 1fr);
+`
 const StListTargetDiv = styled.div`
-  color: white;
-  background-color: pink;
-  margin: 15px;
-  border-radius: 10px;
-`;
+color: white;
+margin: 15px;
+margin-top: 30px;
 
-export default Home;
+cursor: pointer;
+`
+
+const StListTargetImgDiv = styled.div`
+height: 140px;
+background-color: pink;
+border-radius: 10px;
+`
+const StListTargetP = styled.p`
+color: white;
+text-align: center;
+margin-top: 15px;
+`
+
+
+export default Home
