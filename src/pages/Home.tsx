@@ -1,7 +1,7 @@
-<<<<<<< HEAD
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { supabase } from '../api/supabase'
+import {useNavigate} from 'react-router-dom';
 
 const Home = () => {
   useEffect(() => {
@@ -17,6 +17,27 @@ const Home = () => {
   })
   const myArtistTestData = ['나의 아티스트','나의 아티스트','나의 아티스트','나의 아티스트','나의 아티스트']
   const listTestData = ['르세라핌', '태연', '임재현', 'aespa', 'EXO', '박재정', '범진', '아이브', '정국', '임영웅', '너드커넥션', '이무진', '아이유', '제니', '악뮤', '제니', 'RIIZE', '우디', '여자아이들', 'QWER']
+
+  const navigate = useNavigate();
+
+  // user 정보 테스트
+  useEffect(() => {
+    const userInfo = async () => {
+      const {
+        data: {user},
+      } = await supabase.auth.getUser();
+      console.log(user);
+    };
+    userInfo();
+  }, []);
+
+  // 로그아웃
+  const logOut = async () => {
+    const {error} = await supabase.auth.signOut();
+    alert('로그아웃 되었습니다');
+    if (error) console.log('error', error);
+    navigate('/');
+  };
 
   return (
     <StMainWrapper>
@@ -49,12 +70,16 @@ const Home = () => {
               listTestData.map((el) => {
                 return (
                   <StListTargetDiv>{el}</StListTargetDiv>
+                  
                 )
               })
             }
           </StListDiv>
         </StListWrapper>
       </StSideWrapper>
+      <>
+      <button onClick={logOut}>로그아웃</button>
+      </>
     </StMainWrapper>
 
 
@@ -129,40 +154,5 @@ const StListTargetDiv = styled.div`
 `
 
 
-=======
-import React, {useEffect} from 'react';
-import {supabase} from '../api/supabase';
-import {useNavigate} from 'react-router-dom';
 
-const Home = () => {
-  const navigate = useNavigate();
->>>>>>> 6e72a53213e515e26af24f788bcf248db07f5397
-
-  // user 정보 테스트
-  useEffect(() => {
-    const userInfo = async () => {
-      const {
-        data: {user},
-      } = await supabase.auth.getUser();
-      console.log(user);
-    };
-    userInfo();
-  }, []);
-
-  // 로그아웃
-  const logOut = async () => {
-    const {error} = await supabase.auth.signOut();
-    alert('로그아웃 되었습니다');
-    if (error) console.log('error', error);
-    navigate('/');
-  };
-
-  return (
-    //임시 로그아웃버튼
-    <>
-      <button onClick={logOut}>로그아웃</button>
-    </>
-  );
-};
-
-export default Home;
+export default Home
