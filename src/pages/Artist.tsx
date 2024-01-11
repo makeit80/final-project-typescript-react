@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Artistchart from '../components/like/Artistchart';
 
 const Artist = () => {
   return (
-    <div>Artist</div>
-  )
-}
+    <div>
+      <Artistchart />
+    </div>
+  );
+};
 
-export default Artist
+export default Artist;
