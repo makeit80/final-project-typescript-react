@@ -30,9 +30,17 @@ export const kakaoLogin = async () => {
   if (error) console.log('error', error);
 };
 
-// 로그아웃
-export const logOut = async () => {
-  const {error} = await supabase.auth.signOut();
-  alert('로그아웃 되었습니다');
-  if (error) console.log('error', error);
+// 이메일 회원가입
+export const signUp = async (email: string, password: string, nickname: string) => {
+  const {data, error} = await supabase.auth.signUp({
+    email: email,
+    password: password,
+    options: {
+      data: {
+        nickname: nickname,
+      },
+    },
+  });
+  console.log(data);
+  if (data) if (error) console.log('error', error);
 };
