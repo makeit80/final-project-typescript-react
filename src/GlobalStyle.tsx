@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import {createGlobalStyle} from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -14,6 +14,8 @@ License: none (public domain)
 
 
 * {
+   background-color: black;
+   color: white;
  box-sizing: border-box;
 }
 
