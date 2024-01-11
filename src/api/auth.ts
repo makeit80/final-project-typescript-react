@@ -41,6 +41,6 @@ export const signUp = async (email: string, password: string, nickname: string) 
       },
     },
   });
-  console.log(data);
-  if (data) if (error) console.log('error', error);
+  if (data) console.log(data);
+  if (error) console.log('error', error);
 };

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {signUp} from '../../api/auth';
 import {useNavigate} from 'react-router-dom';
 
-const Register = () => {
+const Join = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [passwordAgain, setPasswordAgain] = useState<string>('');
@@ -79,4 +79,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Join;
